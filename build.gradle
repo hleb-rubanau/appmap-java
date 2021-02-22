@@ -66,6 +66,41 @@ shadowJar {
   }
 }
 
+
+///////// taken from 
+/////////   https://stackoverflow.com/questions/44787645/how-to-make-the-gradle-shadowjar-task-also-create-sources-and-javadoc-of-its-chi 
+///////// not sure if we really need subprojects
+
+///////// TODO: make this part optional, as we only need docs & sources for publishing, not development build
+
+subprojects {
+    apply plugin: 'java'
+}
+
+// Must be BELOW subprojects{}
+task alljavadoc(type: Javadoc) {
+    source subprojects.collect { it.sourceSets.main.allJava }
+    classpath = files(subprojects.collect { it.sourceSets.main.compileClasspath })
+    destinationDir = file("${buildDir}/docs/javadoc")
+}
+
+task javadocJar(type: Jar, dependsOn: alljavadoc) {
+    classifier = 'javadoc'
+    from alljavadoc.destinationDir
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from subprojects.collect { it.sourceSets.main.allSource }
+}
+
+shadowJar.finalizedBy javadocJar
+shadowJar.finalizedBy sourcesJar
+
+//////////////// end of codepiece from stackoverflow 
+
+
+
 // For backward compatibility, produce a file named
 // appmap-<version>.jar, too.
 task copyJar(type: Copy) {
