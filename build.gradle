@@ -135,9 +135,9 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-/*
+apply plugin: 'java' 
+
 task javadocJar(type: Jar) {
-    from javadoc
     classifier = 'javadoc'
+    from javadoc.destinationDir
 }
-*/
