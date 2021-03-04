@@ -13,6 +13,7 @@ plugins {
   id 'java'
   id 'war'
   id 'jacoco'
+  id 'signing'
 }
 
 repositories {
@@ -140,4 +141,45 @@ apply plugin: 'java'
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc.destinationDir
+}
+
+/* artifact definition 
+artifacts {
+    archives shadowJar
+    archives sourcesJar
+    archives javadocJar
+}
+*/
+
+apply plugin: 'maven-publish'
+publishing {
+  publications {
+    shadow(MavenPublication) { publication ->
+      project.shadow.component(publication)
+    }
+  }
+}
+
+apply plugin: 'signing' 
+
+/* artifacts {
+    archives jar, sourcesJar, javadocJar, shadowJar
+}*/
+
+signing {
+    def signingKey = findProperty("signingKey")
+    def signingPassword = findProperty("signingPassword")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.shadow
+    /* 
+    sign javadocJar 
+    sign configurations.archives
+    sign shadowJar
+    sign sourcesJar
+    */
+}
+
+
+repositories {
+    mavenLocal()
 }
