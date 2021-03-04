@@ -76,6 +76,11 @@ task copyJar(type: Copy) {
 shadowJar.finalizedBy copyJar
 
 sourceSets {
+  main {
+    java {
+      srcDirs = ['src/']
+    }
+  }
   integrationTest {
     java {
       srcDirs = [ 'src/test/java/com/appland/appmap/integration' ]
@@ -124,3 +129,15 @@ jacocoTestReport {
     html.enabled true
   }
 }
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
+
+/*
+task javadocJar(type: Jar) {
+    from javadoc
+    classifier = 'javadoc'
+}
+*/
