@@ -158,6 +158,15 @@ publishing {
       project.shadow.component(publication)
     }
   }
+ 
+   repositories {
+        maven {
+            name = 'myRepo'
+            url = "file://${buildDir}/repo"
+        }
+    }
+   
+
 }
 
 apply plugin: 'signing' 
