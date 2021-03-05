@@ -204,13 +204,11 @@ publishing {
 }
 
 
-
-
 apply plugin: 'signing' 
 
 signing {
-    def signingKey = findProperty("signingKey")
-    def signingPassword = findProperty("signingPassword")
+    def signingKey = getProperty("signingKey")
+    def signingPassword = getProperty("signingPassword")
     useInMemoryPgpKeys(signingKey, signingPassword)
     //sign publishing.publications.appMapAgent
     sign javadocJar 
