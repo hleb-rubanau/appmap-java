@@ -166,8 +166,13 @@ artifacts {
 apply plugin: 'maven-publish'
 publishing {
   publications {
-    shadow(MavenPublication) { publication ->
-      project.shadow.component(publication)
+    shadow(MavenPublication) { 
+            /* publication -> project.shadow.component(publication) */
+            
+            def mavenGroupId=findProperty('mavenGroupId')
+            from components.shadow
+            groupId mavenGroupId
+            artifactId 'appMapAgent'
     }
   }
  
