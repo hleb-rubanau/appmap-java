@@ -171,12 +171,20 @@ publishing {
  
             def publishGroupId = project.hasProperty('publishGroupId') ? publishGroupId : defaultGroupId 
             def publishArtifactId = project.hasProperty('publishArtifactId') ? publishArtifactId : defaultArtifactId
-            
+   
+            def envTravisBranch=System.getenv("TRAVIS_BRANCH") 
+            def currentVersion=findProperty('appMapAgentVersion')
+                 
             groupId     publishGroupId
             artifactId  publishArtifactId   
             // TBD: parameterize version?
     
-
+            if (currentVersion) {
+                version currentVersion 
+            } else if (envTravisBranch) { // && envTravisBranch==~/^\d+\.\d+/ ) {
+                version envTravisBranch 
+            }
+                
             // 2. artifacts 
             // inclusion of javadoc and source jars is Maven-Central requirement
 

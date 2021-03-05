@@ -7,10 +7,11 @@
 * Sign artifacts
 * Plug together signing and publishing
 * Make sure POM file is filled properly
+* Make sure the version is parameterizable
 
 # TODO:
 
-* Make sure the version is picked up from the git
+* Fix the regexp which limits `TRAVIS\_BUILD` usage as a version parameter (currently commented out -- does not match 0.7.2-rc)
 * Release into real (remote, sonatype) repo
 * Automate via Travis
 * Support Java8
