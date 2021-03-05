@@ -178,11 +178,18 @@ publishing {
     }
     */
             
-    mavenJava(MavenPublication) {
+    appMapAgent(MavenPublication) {
+        def mavenGroupId=findProperty('mavenGroupId')
+    
         from components.java
+    
         artifact sourcesJar
         artifact shadowJar
         artifact javadocJar
+    
+        groupId mavenGroupId
+        artifactId 'appMapAgent'
+    
     }
   }
  
