@@ -178,19 +178,21 @@ publishing {
     }
     */
             
-    appMapAgent(MavenPublication) {
-        def mavenGroupId=findProperty('mavenGroupId')
-        groupId mavenGroupId
-        //groupId 'com.rubanau'
+    if (project.hasProperty("publishGroupId")) {
+        appMapAgent(MavenPublication) {
+            def publishGroupId=findProperty('publishGroupId')
+            groupId publishGroupId
+            //groupId 'com.rubanau'
+        
+            from components.java
+        
+            artifact sourcesJar
+            artifact shadowJar
+            artifact javadocJar
     
-        from components.java
-    
-        artifact sourcesJar
-        artifact shadowJar
-        artifact javadocJar
-    
-        artifactId 'appMapAgent'
-    
+            artifactId 'appMapAgent'
+        
+        }
     }
   }
  
