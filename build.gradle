@@ -179,9 +179,9 @@ publishing {
     */
             
     appMapAgent(MavenPublication) {
-        //def mavenGroupId=findProperty('mavenGroupId')
-        //groupId mavenGroupId
-        groupId 'com.rubanau'
+        def mavenGroupId=findProperty('mavenGroupId')
+        groupId mavenGroupId
+        //groupId 'com.rubanau'
     
         from components.java
     
@@ -207,8 +207,8 @@ publishing {
 apply plugin: 'signing' 
 
 signing {
-    def signingKey = getProperty("signingKey")
-    def signingPassword = getProperty("signingPassword")
+    def signingKey = findProperty("signingKey")
+    def signingPassword = findProperty("signingPassword")
     useInMemoryPgpKeys(signingKey, signingPassword)
     //sign publishing.publications.appMapAgent
     sign javadocJar 
