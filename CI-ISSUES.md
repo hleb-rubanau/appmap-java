@@ -6,10 +6,10 @@
 * Publish to local repo
 * Sign artifacts
 * Plug together signing and publishing
+* Make sure POM file is filled properly
 
 # TODO:
 
-* Make sure POM file is filled properly
 * Make sure the version is picked up from the git
 * Release into real (remote, sonatype) repo
 * Automate via Travis
