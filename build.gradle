@@ -141,6 +141,8 @@ jacocoTestReport {
   }
 }
 
+// extra artifacts used in publishing
+
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
@@ -154,13 +156,16 @@ task javadocJar(type: Jar) {
 }
 
 
+
 apply plugin: 'maven-publish'
 publishing {
   publications {
             
         appMapAgent(MavenPublication) {
 
-           
+            // requirements: https://central.sonatype.org/pages/requirements.html
+
+            // 1. coordinates (parameterized)   
             def defaultGroupId = 'com.appland'
             def defaultArtifactId = 'appMapAgent' 
  
@@ -168,16 +173,53 @@ publishing {
             def publishArtifactId = project.hasProperty('publishArtifactId') ? publishArtifactId : defaultArtifactId
             
             groupId     publishGroupId
-            artifactId  publishArtifactId       
+            artifactId  publishArtifactId   
+            // TBD: parameterize version?
+    
+
+            // 2. artifacts 
+            // inclusion of javadoc and source jars is Maven-Central requirement
 
             from components.java
         
             artifact shadowJar 
             artifact sourcesJar
             artifact javadocJar
+
+   
+            // metadata 
+            // TBD: parameterize more values?
+
+            def defaultGithubRepo="applandinc/appmap-java"
+            def currentGithubRepo=project.hasProperty("currentGithubRepo") ? currentGithubRepo : defaultGithubRepo 
+
+            pom {
+                name = "$publishGroupId:$publishArtifactId"
+                description = "Inspect and record the execution of Java for use with App Land"
+                url = "https://appland.com"     
+            
+                licenses {
+                  license {
+                    name = "MIT"
+                    url = "https://raw.githubusercontent.com/$currentGithubRepo/master/LICENSE.txt"
+                  }
+                }
+                developers {
+                  developer {
+                    // id = "kgilpin"
+                    name = "Kevin Gilpin"
+                    email = "kevin@appland.com"
+                    organization = "AppLand Inc."
+                    url="https://dev.to/kgilpin"
+                  }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/${currentGithubRepo}.git"
+                    developerConnection = "scm:git:ssh://github.com:${currentGithubRepo}.git"
+                    url = "https://github.com/${currentGithubRepo}/tree/master"
+                }
+            }          
  
-            // artifacts = [ shadowJar, sourcesJar, javadocJar ]
-    
         }
   }
  
