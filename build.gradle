@@ -204,20 +204,24 @@ publishing {
 }
 
 
-apply plugin: 'signing' 
 
-signing {
-    def signingKey = findProperty("signingKey")
-    def signingPassword = findProperty("signingPassword")
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    //sign publishing.publications.appMapAgent
-    sign javadocJar 
-    /* 
-    sign javadocJar 
-    sign configurations.archives
-    sign shadowJar
-    sign sourcesJar
-    */
+if (project.hasProperty("signingKey")) {
+    
+    apply plugin: 'signing' 
+    
+    signing {
+        def signingKey = findProperty("signingKey")
+        def signingPassword = findProperty("signingPassword")
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        //sign publishing.publications.appMapAgent
+        sign javadocJar 
+        /* 
+        sign javadocJar 
+        sign configurations.archives
+        sign shadowJar
+        sign sourcesJar
+        */
+    }
 }
 
 
