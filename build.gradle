@@ -172,7 +172,11 @@ publishing {
 
             from components.java
         
-            artifacts = [ shadowJar, sourcesJar, javadocJar ]
+            artifact shadowJar 
+            artifact sourcesJar
+            artifact javadocJar
+ 
+            // artifacts = [ shadowJar, sourcesJar, javadocJar ]
     
         }
   }
