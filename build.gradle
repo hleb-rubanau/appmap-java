@@ -179,7 +179,9 @@ publishing {
     */
             
     appMapAgent(MavenPublication) {
-        def mavenGroupId=findProperty('mavenGroupId')
+        //def mavenGroupId=findProperty('mavenGroupId')
+        //groupId mavenGroupId
+        groupId 'com.rubanau'
     
         from components.java
     
@@ -187,7 +189,6 @@ publishing {
         artifact shadowJar
         artifact javadocJar
     
-        groupId mavenGroupId
         artifactId 'appMapAgent'
     
     }
