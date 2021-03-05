@@ -154,46 +154,27 @@ task javadocJar(type: Jar) {
 }
 
 
-
-/* artifact definition 
-artifacts {
-    archives shadowJar
-    archives sourcesJar
-    archives javadocJar
-}
-*/
-
 apply plugin: 'maven-publish'
 publishing {
   publications {
-    /*
-    shadow(MavenPublication) { 
-            // publication -> project.shadow.component(publication) 
             
-            def mavenGroupId=findProperty('mavenGroupId')
-            from components.shadow
-            groupId mavenGroupId
-            artifactId 'appMapAgent'
-
-    }
-    */
-            
-    if (project.hasProperty("publishGroupId")) {
         appMapAgent(MavenPublication) {
-            def publishGroupId=findProperty('publishGroupId')
-            groupId publishGroupId
-            //groupId 'com.rubanau'
-        
+
+           
+            def defaultGroupId = 'com.appland'
+            def defaultArtifactId = 'appMapAgent' 
+ 
+            def publishGroupId = project.hasProperty('publishGroupId') ? publishGroupId : defaultGroupId 
+            def publishArtifactId = project.hasProperty('publishArtifactId') ? publishArtifactId : defaultArtifactId
+            
+            groupId     publishGroupId
+            artifactId  publishArtifactId       
+
             from components.java
         
-            artifact sourcesJar
-            artifact shadowJar
-            artifact javadocJar
+            artifacts = [ shadowJar, sourcesJar, javadocJar ]
     
-            artifactId 'appMapAgent'
-        
         }
-    }
   }
  
    repositories {
@@ -216,13 +197,6 @@ if (project.hasProperty("signingKey")) {
         def signingPassword = findProperty("signingPassword")
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.appMapAgent
-        //sign javadocJar 
-        /* 
-        sign javadocJar 
-        sign configurations.archives
-        sign shadowJar
-        sign sourcesJar
-        */
     }
 }
 
