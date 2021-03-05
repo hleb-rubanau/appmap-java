@@ -31,10 +31,16 @@ dependencies {
   implementation 'javax.servlet:javax.servlet-api:4.0.1'
   implementation 'org.apache.commons:commons-lang3:3.10'
   implementation 'org.slf4j:slf4j-nop:1.7.30'
+  
+  /// are test classes becoming part of "build" purposedly or by mistake?
+  implementation 'junit:junit:4.12'
 
   testImplementation 'junit:junit:4.12'
   testImplementation 'com.github.stefanbirkner:system-rules:1.19.0'
   testImplementation "org.mockito:mockito-core:2.+"
+
+  
+
 }
 
 jar {
@@ -143,6 +149,8 @@ task javadocJar(type: Jar) {
     from javadoc.destinationDir
 }
 
+
+
 /* artifact definition 
 artifacts {
     archives shadowJar
@@ -151,6 +159,7 @@ artifacts {
 }
 */
 
+/*
 apply plugin: 'maven-publish'
 publishing {
   publications {
@@ -166,29 +175,33 @@ publishing {
         }
     }
    
+}*/
 
-}
 
-apply plugin: 'signing' 
 
 /* artifacts {
     archives jar, sourcesJar, javadocJar, shadowJar
 }*/
+
+/*
+apply plugin: 'signing' 
 
 signing {
     def signingKey = findProperty("signingKey")
     def signingPassword = findProperty("signingPassword")
     useInMemoryPgpKeys(signingKey, signingPassword)
     sign publishing.publications.shadow
+*/
     /* 
     sign javadocJar 
     sign configurations.archives
     sign shadowJar
     sign sourcesJar
     */
-}
+//}
 
 
+/*
 repositories {
     mavenLocal()
-}
+}*/
