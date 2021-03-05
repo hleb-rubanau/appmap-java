@@ -195,7 +195,7 @@ publishing {
  
    repositories {
         maven {
-            name = 'myRepo'
+            name = 'devRepo'
             url = "file://${buildDir}/repo"
         }
     }
@@ -204,29 +204,20 @@ publishing {
 
 
 
-/* artifacts {
-    archives jar, sourcesJar, javadocJar, shadowJar
-}*/
 
-/*
 apply plugin: 'signing' 
 
 signing {
     def signingKey = findProperty("signingKey")
     def signingPassword = findProperty("signingPassword")
     useInMemoryPgpKeys(signingKey, signingPassword)
-    sign publishing.publications.shadow
-*/
+    sign publishing.publications.appMapAgent
     /* 
     sign javadocJar 
     sign configurations.archives
     sign shadowJar
     sign sourcesJar
     */
-//}
+}
 
 
-/*
-repositories {
-    mavenLocal()
-}*/
