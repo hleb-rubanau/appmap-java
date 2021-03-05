@@ -1,0 +1,23 @@
+gradlew publish
+
+* What went wrong:
+Could not determine the dependencies of task ':publishAppMapAgentPublicationToMyRepoRepository'.
+> Cannot query the value of this property because it has no value available.
+
+gradlew signAppMapAgentPublication
+
+* What went wrong:
+Could not determine the dependencies of task ':signAppMapAgentPublication'.
+> Cannot query the value of this property because it has no value available.
+
+gradlew signJavadocJar
+
+
+* What went wrong:
+Execution failed for task ':signJavadocJar'.
+> Cannot perform signing task ':signJavadocJar' because it has no configured signatory
+
+
+
+
+
