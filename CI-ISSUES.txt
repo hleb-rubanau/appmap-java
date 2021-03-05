@@ -1,3 +1,4 @@
 1. Plug together signing and publishing
 2. Make sure POM file is filled properly
 3. Plug into real repo
+4. Automate via Travis

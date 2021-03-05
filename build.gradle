@@ -215,8 +215,8 @@ if (project.hasProperty("signingKey")) {
         def signingKey = findProperty("signingKey")
         def signingPassword = findProperty("signingPassword")
         useInMemoryPgpKeys(signingKey, signingPassword)
-        //sign publishing.publications.appMapAgent
-        sign javadocJar 
+        sign publishing.publications.appMapAgent
+        //sign javadocJar 
         /* 
         sign javadocJar 
         sign configurations.archives
