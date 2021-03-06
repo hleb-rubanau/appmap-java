@@ -181,7 +181,7 @@ publishing {
     
             if (currentVersion) {
                 version currentVersion 
-            } else if (envTravisBranch) { // && envTravisBranch==~/^\d+\.\d+/ ) {
+            } else if ((envTravisBranch) && (envTravisBranch==~/^\d+\.\d+.*/ )) {
                 version envTravisBranch 
             }
                 
