@@ -30,5 +30,7 @@ deploy:
   - provider: script
     script: ./gradlew publish
     skip_cleanup: true
-    #on:
-    #  tags: true
+    on:
+      all_branches: true
+    # tags: true
+    # condition: "$TRAVIS_BRANCH ==~ ^\d+\.\d+\..*" 
