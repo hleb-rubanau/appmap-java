@@ -21,7 +21,17 @@ repositories {
   mavenCentral()
 }
 
-version = '0.5.0'
+// hardcoded -- could be redefined via env variables and project properties (see below)
+def parameterizedVersion    = findProperty('appMapAgentVersion')
+def travisVersion           = System.getenv("TRAVIS_BRANCH") 
+def hardcodedVersion        = '0.5.0'
+
+def versionLikeRegexp       = /^\d+\.\d+.*/
+def travisVersionValid      = travisVersion && (travisVersion ==~ versionLikeRegexp)
+
+
+version = parameterizedVersion ?: ( travisVersionValid ? travisVersion : hardcodedVersion )
+
 
 dependencies {
   implementation 'org.yaml:snakeyaml:1.25'
@@ -172,19 +182,12 @@ publishing {
             def publishGroupId = project.hasProperty('publishGroupId') ? publishGroupId : defaultGroupId 
             def publishArtifactId = project.hasProperty('publishArtifactId') ? publishArtifactId : defaultArtifactId
    
-            def envTravisBranch=System.getenv("TRAVIS_BRANCH") 
-            def currentVersion=findProperty('appMapAgentVersion')
                  
             groupId     publishGroupId
-            artifactId  publishArtifactId   
-            // TBD: parameterize version?
+            artifactId  publishArtifactId + '-' + versionSuffix
     
-            if (currentVersion) {
-                version currentVersion 
-            } else if ((envTravisBranch) && (envTravisBranch==~/^\d+\.\d+.*/ )) {
-                version envTravisBranch 
-            }
-                
+            // version defined globally
+ 
             // 2. artifacts 
             // inclusion of javadoc and source jars is Maven-Central requirement
 
@@ -232,10 +235,26 @@ publishing {
   }
  
    repositories {
+
+        def local_url       = "file://${buildDir}/repo"
+        // see https://central.sonatype.org/pages/gradle.html
+        def url_base        = "https://s01.oss.sonatype.org/"
+        def staging_url     = url_base + "/service/local/staging/deploy/maven2/"
+        def snapshots_url   = url_base + "/content/repositories/snapshots/"
+        
+        def is_snapshot     = version.endsWith('SNAPSHOT')
+        def remote_url      = is_snapshot  ? snapshots_url : staging_url 
+        
+        def use_remote = findProperty('ossrhUsername') 
+        
+        /// blow up if name is configured but password  omitted
+        def password_assertion = use_remote && getProperty('ossrhPassword')
+        
         maven {
-            name = 'devRepo'
-            url = "file://${buildDir}/repo"
+            url = use_remote ? remote_url : local_url  
         }
+
+            
     }
    
 }
