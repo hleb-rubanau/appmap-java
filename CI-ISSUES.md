@@ -13,6 +13,7 @@
 
 # TODO:
 
+* BUG: POM contains prohibited syntax for mockito dependency
 * Automate via Travis
 * Support release cycle for appmap-java-maven-plugin
 * BUG? Javadoc is empty

@@ -45,15 +45,14 @@ dependencies {
   /// are test classes becoming part of "build" purposedly or by mistake?
   implementation 'junit:junit:4.12'
   implementation 'com.github.stefanbirkner:system-rules:1.19.0'
-  implementation "org.mockito:mockito-core:2.+"
+  //implementation "org.mockito:mockito-core:2.+" # maven requires  strict syntax
+  implementation "org.mockito:mockito-core:2.28.2"
   compile 'com.github.stefanbirkner:system-rules:1.19.0'
 
   testImplementation 'junit:junit:4.12'
   testImplementation 'com.github.stefanbirkner:system-rules:1.19.0'
-  testImplementation "org.mockito:mockito-core:2.+"
-
-  
-  
+  //testImplementation "org.mockito:mockito-core:2.+"
+  testImplementation "org.mockito:mockito-core:2.28.2"
 
 }
 
