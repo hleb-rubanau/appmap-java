@@ -238,20 +238,28 @@ publishing {
 
         def local_url       = "file://${buildDir}/repo"
         // see https://central.sonatype.org/pages/gradle.html
-        def url_base        = "https://s01.oss.sonatype.org/"
+        //def default_base        = "https://s01.oss.sonatype.org/"
+        def default_base    = "https://oss.sonatype.org/"
+        def url_base        = findProperty("mavenRepoURL") ?: default_base
         def staging_url     = url_base + "/service/local/staging/deploy/maven2/"
         def snapshots_url   = url_base + "/content/repositories/snapshots/"
         
         def is_snapshot     = version.endsWith('SNAPSHOT')
         def remote_url      = is_snapshot  ? snapshots_url : staging_url 
         
-        def use_remote = findProperty('ossrhUsername') 
+        def ossrh_username = findProperty('ossrhUsername') 
         
-        /// blow up if name is configured but password  omitted
-        def password_assertion = use_remote && getProperty('ossrhPassword')
         
         maven {
-            url = use_remote ? remote_url : local_url  
+            if (ossrh_username) {
+                url = remote_url 
+                credentials {
+                    username = ossrh_username 
+                    password = getProperty('ossrhPassword') 
+                }
+            } else {
+                url = local_url
+            }
         }
 
             
