@@ -41,13 +41,15 @@ dependencies {
   implementation 'javax.servlet:javax.servlet-api:4.0.1'
   implementation 'org.apache.commons:commons-lang3:3.10'
   implementation 'org.slf4j:slf4j-nop:1.7.30'
-  
+ 
+  /* 
   /// are test classes becoming part of "build" purposedly or by mistake?
   implementation 'junit:junit:4.12'
   implementation 'com.github.stefanbirkner:system-rules:1.19.0'
   //implementation "org.mockito:mockito-core:2.+" # maven requires  strict syntax
   implementation "org.mockito:mockito-core:2.28.2"
   compile 'com.github.stefanbirkner:system-rules:1.19.0'
+  */
 
   testImplementation 'junit:junit:4.12'
   testImplementation 'com.github.stefanbirkner:system-rules:1.19.0'
@@ -96,11 +98,13 @@ task copyJar(type: Copy) {
 shadowJar.finalizedBy copyJar
 
 sourceSets {
+  /* 
   main {
     java {
-      srcDirs = ['src/']
+      srcDirs = ['src/main']
     }
   }
+  */  
   integrationTest {
     java {
       srcDirs = [ 'src/test/java/com/appland/appmap/integration' ]
@@ -152,14 +156,25 @@ jacocoTestReport {
 
 // extra artifacts used in publishing
 
+/*
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
 }
+*/
 
 apply plugin: 'java' 
+java {
+    withSourcesJar() 
+    // withJavadocJar()  -- fails with errors, see wowrkaround below
+}
 
-task javadocJar(type: Jar) {
+// for some reason this block generates empty Javadoc
+// which we use as a workaround to bypass javadoc errors issue
+javadoc {
+    exclude 'com/appland/**'
+}
+task mockJavadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
@@ -193,8 +208,11 @@ publishing {
             from components.java
         
             artifact shadowJar 
-            artifact sourcesJar
-            artifact javadocJar
+            artifact mockJavadocJar // empty javadoc generated until errors are fixed
+
+            //// the artifacts below added automatically by `java { with... }` block above
+            // artifact sourcesJar
+            // artifact javadocJar
 
    
             // metadata 
