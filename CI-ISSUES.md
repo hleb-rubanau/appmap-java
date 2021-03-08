@@ -17,5 +17,6 @@
 
 # TODO:
 
+* Regresion in Java8 test
 * Support release cycle for appmap-java-maven-plugin
 * BUG? Javadoc is empty
