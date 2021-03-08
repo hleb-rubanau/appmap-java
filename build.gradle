@@ -32,6 +32,13 @@ def travisVersionValid      = travisVersion && (travisVersion ==~ versionLikeReg
 
 version = parameterizedVersion ?: ( travisVersionValid ? travisVersion : hardcodedVersion )
 
+def defaultGitSlug="applandinc/appmap-java"
+def currentGitSlug=System.getenv("TRAVIS_REPO_SLUG") ?: defaultGitSlug
+
+def defaultGroupId      = 'com.appland'
+def defaultArtifactId   = 'appMapAgent' 
+def publishGroupId      = findProperty('publishGroupId') ?: defaultGroupId 
+def publishArtifactId   = findProperty('publishArtifactId') ?: defaultArtifactId
 
 dependencies {
   implementation 'org.yaml:snakeyaml:1.25'
@@ -190,11 +197,6 @@ publishing {
             // requirements: https://central.sonatype.org/pages/requirements.html
 
             // 1. coordinates (parameterized)   
-            def defaultGroupId = 'com.appland'
-            def defaultArtifactId = 'appMapAgent' 
- 
-            def publishGroupId = project.hasProperty('publishGroupId') ? publishGroupId : defaultGroupId 
-            def publishArtifactId = project.hasProperty('publishArtifactId') ? publishArtifactId : defaultArtifactId
    
                  
             groupId     publishGroupId
@@ -218,8 +220,6 @@ publishing {
             // metadata 
             // TBD: parameterize more values?
 
-            def defaultGithubRepo="applandinc/appmap-java"
-            def currentGithubRepo=project.hasProperty("currentGithubRepo") ? currentGithubRepo : defaultGithubRepo 
 
             pom {
                 name = "$publishGroupId:$publishArtifactId"
@@ -229,7 +229,7 @@ publishing {
                 licenses {
                   license {
                     name = "MIT"
-                    url = "https://raw.githubusercontent.com/$currentGithubRepo/master/LICENSE.txt"
+                    url = "https://raw.githubusercontent.com/$currentGitSlug/master/LICENSE.txt"
                   }
                 }
                 developers {
@@ -242,9 +242,9 @@ publishing {
                   }
                 }
                 scm {
-                    connection = "scm:git:git://github.com/${currentGithubRepo}.git"
-                    developerConnection = "scm:git:ssh://github.com:${currentGithubRepo}.git"
-                    url = "https://github.com/${currentGithubRepo}/tree/master"
+                    connection = "scm:git:git://github.com/${currentGitSlug}.git"
+                    developerConnection = "scm:git:ssh://github.com:${currentGitSlug}.git"
+                    url = "https://github.com/${currentGitSlug}/tree/master"
                 }
             }          
  
