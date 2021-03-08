@@ -10,10 +10,12 @@
 * Parameterizable coordinates (version, group, artifact)
 * Support Java8
 * Release into real (remote, sonatype) repo
+* BUG: POM contains prohibited syntax for mockito dependency
+
+# Work in progress
+* Automate via Travis
 
 # TODO:
 
-* BUG: POM contains prohibited syntax for mockito dependency
-* Automate via Travis
 * Support release cycle for appmap-java-maven-plugin
 * BUG? Javadoc is empty
