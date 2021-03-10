@@ -107,7 +107,12 @@ task overwriteDefaultJar( type: Copy) {
   into shadowJar.destinationDir
   rename { f -> "appmap-java-${version}.jar" } // :( 
 }
-shadowJar.finalizedBy overwriteDefaultJar
+
+overwriteDefaultJar.dependsOn shadowJar
+overwriteDefaultJar.dependsOn jar 
+generateMetadataFileForAppMapAgentPublication.dependsOn overwriteDefaultJar
+generatePomFileForAppMapAgentPublication.dependsOn      overwriteDefaultJar
+
 
 /*
 NO MORE NEEDED
