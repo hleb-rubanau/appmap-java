@@ -102,16 +102,31 @@ shadowJar {
 }
 
 // very dirty thing -- copying fat jar on top of tiny one
+// HACK
 task overwriteDefaultJar( type: Copy) {
   from shadowJar
   into shadowJar.destinationDir
   rename { f -> "appmap-java-${version}.jar" } // :( 
+
 }
 
+// HACK
 overwriteDefaultJar.dependsOn shadowJar
 overwriteDefaultJar.dependsOn jar 
-generateMetadataFileForAppMapAgentPublication.dependsOn overwriteDefaultJar
-generatePomFileForAppMapAgentPublication.dependsOn      overwriteDefaultJar
+
+// HACK
+// enforce all hackish tasks to be finished before metadata generation starts
+// so that all sizes/checksums/signatures will be calculated towards desired files
+overwriteDefaultJar.finalizedBy "generateMetadataFileForAppMapAgentPublication"
+overwriteDefaultJar.finalizedBy "generatePomFileForAppMapAgentPublication"
+
+// another dirty hack -- javadoc does not need this override itself
+// but it allows us to enforce required ordering 
+// (overwrite should happen before any metadata generation and signatures)
+//publish.dependsOn overwriteDefaultJar 
+//publish.dependsOn mockJavadocJar
+//generateMetadataFileForAppMapAgentPublication.dependsOn overwriteDefaultJar
+//generatePomFileForAppMapAgentPublication.dependsOn      overwriteDefaultJar
 
 
 /*
@@ -204,19 +219,23 @@ task sourcesJar(type: Jar) {
 apply plugin: 'java' 
 java {
     withSourcesJar() 
-    // withJavadocJar()  -- fails with errors, see wowrkaround below
+    // withJavadocJar()  // -- fails with errors, see wowrkaround below HACK
 }
 
 // for some reason this block generates empty Javadoc
 // which we use as a workaround to bypass javadoc errors issue
 javadoc {
-    exclude 'com/appland/**'
+    exclude 'com/appland/**'                                    // HACK
 }
-task mockJavadocJar(type: Jar) {
+
+task mockJavadocJar(type: Jar) {                                // HACK
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
 
+// HACK
+mockJavadocJar.finalizedBy "generateMetadataFileForAppMapAgentPublication"
+mockJavadocJar.finalizedBy "generatePomFileForAppMapAgentPublication"
 
 
 apply plugin: 'maven-publish'
