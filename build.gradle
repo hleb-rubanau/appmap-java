@@ -108,17 +108,20 @@ task overwriteDefaultJar( type: Copy) {
   into shadowJar.destinationDir
   rename { f -> "appmap-java-${version}.jar" } // :( 
 
+  dependsOn     jar
+  finalizedBy "generateMetadataFileForAppMapAgentPublication"
+  finalizedBy "generatePomFileForAppMapAgentPublication"
 }
 
 // HACK
-overwriteDefaultJar.dependsOn shadowJar
-overwriteDefaultJar.dependsOn jar 
+shadowJar.finalizedBy overwriteDefaultJar
+// overwriteDefaultJar.dependsOn jar 
 
 // HACK
 // enforce all hackish tasks to be finished before metadata generation starts
 // so that all sizes/checksums/signatures will be calculated towards desired files
-overwriteDefaultJar.finalizedBy "generateMetadataFileForAppMapAgentPublication"
-overwriteDefaultJar.finalizedBy "generatePomFileForAppMapAgentPublication"
+// overwriteDefaultJar.finalizedBy "generateMetadataFileForAppMapAgentPublication"
+// overwriteDefaultJar.finalizedBy "generatePomFileForAppMapAgentPublication"
 
 // another dirty hack -- javadoc does not need this override itself
 // but it allows us to enforce required ordering 
