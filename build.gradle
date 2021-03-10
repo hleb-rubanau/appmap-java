@@ -86,15 +86,31 @@ switch(v = JavaVersion.current()) {
     throw new GradleException("unknown Java version ${v}, can't copy jar")
 }
 
+/* jar { 
+    //enabled = false 
+    classifier = 'tiny'
+}  */
+
 shadowJar {
   baseName = 'appmap'
-  classifier = versionSuffix
+  classifier = 'full'
   minimize()
   dependencies {
     exclude(dependency('javax.servlet:javax.servlet-api:4.0.1'))
   }
+  // tbd: inherit path convention from `jar`, there's a directive
 }
 
+// very dirty thing -- copying fat jar on top of tiny one
+task overwriteDefaultJar( type: Copy) {
+  from shadowJar
+  into shadowJar.destinationDir
+  rename { f -> "appmap-java-${version}.jar" } // :( 
+}
+shadowJar.finalizedBy overwriteDefaultJar
+
+/*
+NO MORE NEEDED
 // For backward compatibility, produce a file named
 // appmap-<version>.jar, too.
 task copyJar(type: Copy) {
@@ -103,6 +119,16 @@ task copyJar(type: Copy) {
   rename { f -> f - "-${versionSuffix}" }
 }
 shadowJar.finalizedBy copyJar
+*/
+
+/*
+task overwriteDefaultJar(type: Copy) {
+  from shadowJar 
+  into shadowJar.destinationDir
+}
+shadowJar.finalizedBy overwriteDefaultJar
+shadowJar.dependsOn jar
+*/
 
 sourceSets {
   /* 
