@@ -163,12 +163,10 @@ jacocoTestReport {
 
 // extra artifacts used in publishing
 
-/*
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
 }
-*/
 
 apply plugin: 'java' 
 java {
@@ -207,9 +205,14 @@ publishing {
             // 2. artifacts 
             // inclusion of javadoc and source jars is Maven-Central requirement
 
-            from components.java
-        
+            // from components.java 
+
+            /* copyJar.eachFile { fcd -> 
+                //artifact fcd.getFile()
+                artifact( [ source:  ( shadowJar.destinationDir + fcd.getRelativePath()) ] )
+            } */
             artifact shadowJar 
+            artifact sourcesJar
             artifact mockJavadocJar // empty javadoc generated until errors are fixed
 
             //// the artifacts below added automatically by `java { with... }` block above
