@@ -42,4 +42,3 @@ deploy:
       tags: true
       skip_cleanup: true
       condition: ^v?[[:digit:]]+\.[[:digit:]]\..*$
-
