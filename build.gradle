@@ -26,10 +26,10 @@ def parameterizedVersion    = findProperty('appMapAgentVersion')
 def travisVersion           = System.getenv("TRAVIS_BRANCH")
 def defaultVersion          = '1.0.4'
 
-def versionLikeRegexp       = /^\d+\.\d+.*/
+def versionLikeRegexp       = /^v?\d+\.\d+.*/
 def travisVersionValid      = travisVersion && (travisVersion ==~ versionLikeRegexp)
 
-version = parameterizedVersion ?: ( travisVersionValid ? travisVersion : defaultVersion )
+version = parameterizedVersion ?: ( travisVersionValid ? travisVersion.replaceAll(/^v/,'') : defaultVersion )
 
 def defaultGitSlug="applandinc/appmap-java"
 def currentGitSlug=System.getenv("TRAVIS_REPO_SLUG") ?: defaultGitSlug
