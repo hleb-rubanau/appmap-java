@@ -1,3 +1,7 @@
+## [1.0.5] 
+
+Testing semantic-release
+
 ## [1.0.4](https://github.com/applandinc/appmap-java/compare/v1.0.3...v1.0.4) (2021-04-08)
 
 
