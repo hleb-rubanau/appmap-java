@@ -35,10 +35,3 @@ deploy:
     script: semantic-release
     on:
       branch: master
-  - provider: script
-    script: ./gradlew publish
-    on:
-      all_branches: true
-      tags: true
-      skip_cleanup: true
-      condition: ^v?[[:digit:]]+\.[[:digit:]]\..*$
