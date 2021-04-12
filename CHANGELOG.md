@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.7...v1.0.8) (2021-04-12)
+
+
+### Bug Fixes
+
+* **gradle:** rerun once again because publication timed out ([f87e7e1](https://github.com/hleb-rubanau/appmap-java/commit/f87e7e10c283d1c9bc8895e185edbef3de39b794))
+
 ## [1.0.7](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.6...v1.0.7) (2021-04-12)
 
 
