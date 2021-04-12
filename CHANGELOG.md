@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.6...v1.0.7) (2021-04-12)
+
+
+### Bug Fixes
+
+* **gradle:** not really fixing anything but going to re-trigger the release ([7c0465e](https://github.com/hleb-rubanau/appmap-java/commit/7c0465e39c3a0de24d126ad1f882eecc42a7af40))
+
 ## [1.0.6](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.5...v1.0.6) (2021-04-12)
 
 
