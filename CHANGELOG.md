@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.5...v1.0.6) (2021-04-12)
+
+
+### Bug Fixes
+
+* **gradle:** ok, let's trigger it again ([bf9e3e5](https://github.com/hleb-rubanau/appmap-java/commit/bf9e3e56554f340fae6aeadc6f2ddf77e8e2d80a))
+
 ## [1.0.5] 
 
 Testing semantic-release
