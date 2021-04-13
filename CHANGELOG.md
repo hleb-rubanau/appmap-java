@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.1...v1.0.2) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** disable debug step ([6cc9b9b](https://github.com/hleb-rubanau/appmap-java/commit/6cc9b9b039fc10dbc0d314e017a5a690932ef5c8))
+
 ## [1.0.1](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.0...v1.0.1) (2021-04-13)
 
 
