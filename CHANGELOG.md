@@ -1,3 +1,30 @@
+# 1.0.0 (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** add debugging output ([8b63cfa](https://github.com/hleb-rubanau/appmap-java/commit/8b63cfaeb949549ec8436dddcdf57351a70905d6))
+* **gradle:** add debugging output ([e577d30](https://github.com/hleb-rubanau/appmap-java/commit/e577d3075404e3830533dc30cf722eb28e7e83a8))
+* **gradle:** alternative way of specifying nexus credentials ([2df78dd](https://github.com/hleb-rubanau/appmap-java/commit/2df78dd75fccfa4c3a7b55b98ce7328fbf6eb8df))
+* **gradle:** alternative way of specifying nexus credentials ([a018510](https://github.com/hleb-rubanau/appmap-java/commit/a018510e3685c04dbf1ef7b2128c842ca8798a53))
+* **gradle:** broken gradle directives ([b529ea2](https://github.com/hleb-rubanau/appmap-java/commit/b529ea2ac984b003c100a78619591ecf106d3a2d))
+* **gradle:** fix typo ([7d11ffa](https://github.com/hleb-rubanau/appmap-java/commit/7d11ffa18bb42225a2de121fc888592eb7c88f82))
+* **gradle:** troubleshoot testenv ([80e7b29](https://github.com/hleb-rubanau/appmap-java/commit/80e7b29efec25489b82f5d6ffb3757c07c8c1aa5))
+* **gradle:** troubleshoot testenv ([5c16f70](https://github.com/hleb-rubanau/appmap-java/commit/5c16f70d82e3a41f512c9e863a73f84f3226d291))
+* Allow classes compiled without locals to be hooked ([0e0a0d3](https://github.com/hleb-rubanau/appmap-java/commit/0e0a0d333bf1b3323492765aa29df064a1de027d))
+* Capture exceptions thrown from SQL interfaces ([9d1e66f](https://github.com/hleb-rubanau/appmap-java/commit/9d1e66fe7254bb262bf6b1ab2b8156d1bd1fee77))
+* disable http client requests ([#60](https://github.com/hleb-rubanau/appmap-java/issues/60)) ([2131d82](https://github.com/hleb-rubanau/appmap-java/commit/2131d822d8026900f00bacac7ccb8b146c65d464))
+* Don't append System path to class pools ([681d74e](https://github.com/hleb-rubanau/appmap-java/commit/681d74ec843a5b4c7acf317114cd54766a3b2d87))
+* improve path and package resolution ([#62](https://github.com/hleb-rubanau/appmap-java/issues/62)) ([c3ba3df](https://github.com/hleb-rubanau/appmap-java/commit/c3ba3df5286cba6efd929e6cdcf583ebc28b96b2))
+* Provide better error message when encountering an unknown event ([c69a877](https://github.com/hleb-rubanau/appmap-java/commit/c69a87779a5a33994b295aade6cfcfd188d3cc37))
+
+
+### Features
+
+* **docs:** improve CI documentation and also trigger the relase ([e6b5a8e](https://github.com/hleb-rubanau/appmap-java/commit/e6b5a8ed21866d0ae17d5328f671219cd7c9099b))
+* AppMap Maven plugin ([#46](https://github.com/hleb-rubanau/appmap-java/issues/46)) ([1798df2](https://github.com/hleb-rubanau/appmap-java/commit/1798df254f76155bdae9d74ff1f32b7be6f1d15b))
+* appmap.yml errors are logged to stderr ([e746253](https://github.com/hleb-rubanau/appmap-java/commit/e7462538725142b50638c036835e04345f1a81d4))
+
 ## [1.0.4](https://github.com/applandinc/appmap-java/compare/v1.0.3...v1.0.4) (2021-04-08)
 
 
