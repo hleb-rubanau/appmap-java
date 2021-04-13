@@ -19,9 +19,9 @@ plugins:
         - build.gradle
   - - '@semantic-release/exec'
     #- publishCmd: ./gradlew publish
-    #- publishCmd: ./gradlew publishToSonatype closeSonatypeStagingRepository
+    - publishCmd: ./gradlew publishToSonatype closeSonatypeStagingRepository
     #- publishCmd: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
-    - publishCmd: ./bin/testenv
+    # - publishCmd: ./bin/testenv
   - - '@semantic-release/github'
     - assets:
         - build/libs/appmap-*.jar*
