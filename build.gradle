@@ -224,7 +224,7 @@ publishing {
 
 nexusPublishing {
     repositories {
-        ossrh { // the name matters, as it's used to look up credentials vars 
+        sonatype { 
 
             // see https://central.sonatype.org/pages/gradle.html
             def default_base        = "https://s01.oss.sonatype.org"
