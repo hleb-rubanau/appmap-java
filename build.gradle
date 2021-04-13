@@ -237,8 +237,8 @@ nexusPublishing {
             println("DEBUG: findProperty('ossrhUsername')"+project.findProperty('ossrhUsername')  )
 
  
-            //nexusUrl                = uri(  url_base + "/service/local/")
-            nexusUrl                = uri(  url_base + "/service/local/staging/deploy/maven2/")   
+            nexusUrl                = uri(  url_base + "/service/local/")
+            //nexusUrl                = uri(  url_base + "/service/local/staging/deploy/maven2/")   
             snapshotRepositoryUrl   = uri(  url_base + "/content/repositories/snapshots" )        
             username                = project.getProperty('ossrhUsername')    
             password                = project.getProperty('ossrhPassword')    
