@@ -229,7 +229,9 @@ nexusPublishing {
             def is_snapshot     = version.endsWith('SNAPSHOT')
             def remote_url      = is_snapshot ? snapshots_url : staging_url
 
-           
+            println "DEBUG: url_base=${url_base}"
+            println "DEBUG: ORG_GRADLE_PROJECT_mavenRepoURL"+System.getenv("ORG_GRADLE_PROJECT_mavenRepoURL")       
+ 
             //nexusUrl.set(uri(staging_url))
             nexusUrl                = uri(url_base+"/service/local/")
             snapshotRepositoryUrl   = uri(snapshots_url)
