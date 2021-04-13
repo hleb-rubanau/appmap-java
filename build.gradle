@@ -224,6 +224,11 @@ nexusPublishing {
     repositories {
         sonatype { 
 
+            // this is evaluated even when task itself is not invoked
+            // so we use fault-tolerant `findProperty` instead of strict `getProperty`
+            // solely in order to allow building artifacts 
+            // without runtime configuration (e.g. in context of Docker build)
+
             // see https://central.sonatype.org/pages/gradle.html
             def default_base        = "https://s01.oss.sonatype.org"
             //def default_base    = "https://oss.sonatype.org"
@@ -232,8 +237,8 @@ nexusPublishing {
             nexusUrl                = uri(  url_base + "/service/local/")
             //nexusUrl                = uri(  url_base + "/service/local/staging/deploy/maven2/")   
             snapshotRepositoryUrl   = uri(  url_base + "/content/repositories/snapshots" )        
-            username                = project.getProperty('ossrhUsername')    
-            password                = project.getProperty('ossrhPassword')    
+            username                = project.findProperty('ossrhUsername')    
+            password                = project.findProperty('ossrhPassword')    
         }
     }
 
