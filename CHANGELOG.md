@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.4...v1.0.5) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** cosmetic change, there is certainly no closures ([350b79a](https://github.com/hleb-rubanau/appmap-java/commit/350b79a4c1fb9fb415701098ced415bcc74b1622))
+
 ## [1.0.4](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.3...v1.0.4) (2021-04-13)
 
 
