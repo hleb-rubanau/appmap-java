@@ -241,6 +241,7 @@ nexusPublishing {
             password                = project.getProperty('ossrhPassword')    
         }
     }
+
 }
 
 
