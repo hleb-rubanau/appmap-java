@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.0...v1.0.1) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** specify group for the root project, also try lazy evaluation of the properties ([39d8158](https://github.com/hleb-rubanau/appmap-java/commit/39d8158cc8ec0ce422738cfc07e3509e3af87fc5))
+
 # 1.0.0 (2021-04-13)
 
 
