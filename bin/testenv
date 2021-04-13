@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+echo "---------"
+echo "CONFIGURED GRADLE VARIABLES:"
+echo ""
+env | grep ORG_GRADLE
+echo "---------"
+
