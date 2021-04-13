@@ -44,9 +44,6 @@ def publishArtifactId   = findProperty('publishArtifactId') ?: defaultArtifactId
 version = parameterizedVersion ?: ( travisVersionValid ? travisVersion : defaultVersion )
 group = publishGroupId
             
-println "DEBUG: ORG_GRADLE_PROJECT_ossrhUsername="+System.getenv("ORG_GRADLE_PROJECT_ossrhUsername")
-println "DEBUG: findProperty ossrhUsername=" + project.findProperty('ossrhUsername')
-
 dependencies {
   implementation 'org.yaml:snakeyaml:1.25'
   implementation 'com.alibaba:fastjson:1.2.61'
@@ -232,11 +229,6 @@ nexusPublishing {
             //def default_base    = "https://oss.sonatype.org"
             def url_base        = findProperty("mavenRepoURL") ?: default_base 
 
-            println("DEBUG: url_base=${url_base}") 
-            println("DEBUG: ENV[ORG_GRADLE_PROJECT_ossrhUsername]="+System.getenv("ORG_GRADLE_PROJECT_ossrhUsername") )
-            println("DEBUG: findProperty('ossrhUsername')"+project.findProperty('ossrhUsername')  )
-
- 
             nexusUrl                = uri(  url_base + "/service/local/")
             //nexusUrl                = uri(  url_base + "/service/local/staging/deploy/maven2/")   
             snapshotRepositoryUrl   = uri(  url_base + "/content/repositories/snapshots" )        
