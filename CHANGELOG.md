@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.0...v1.1.1) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** shorten url base to conform with Gradle Nexus conventions (maven-publish used more precisely defined url) ([10ad05c](https://github.com/hleb-rubanau/appmap-java/commit/10ad05cd746d1fdd33ee749e622eeab757004a2a))
+
 # [1.1.0](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.4...v1.1.0) (2021-04-13)
 
 
