@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.3...v1.0.4) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** more debugging ([8bc1fe8](https://github.com/hleb-rubanau/appmap-java/commit/8bc1fe83ecdc98f8756e3752a00dc1503d9739c4))
+* **gradle:** roll back to straight plain syntax which triggers the bug ([2e65724](https://github.com/hleb-rubanau/appmap-java/commit/2e65724ee5df99fcaf121be36996dff956fec0e9))
+
 ## [1.0.3](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.2...v1.0.3) (2021-04-13)
 
 
