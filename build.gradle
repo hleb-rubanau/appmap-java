@@ -44,7 +44,8 @@ def publishArtifactId   = findProperty('publishArtifactId') ?: defaultArtifactId
 version = parameterizedVersion ?: ( travisVersionValid ? travisVersion : defaultVersion )
 group = publishGroupId
             
-println "DEBUG: ORG_GRADLE_PROJECT_ossrhUsername"+System.getenv("ORG_GRADLE_PROJECT_ossrhUsername")
+println "DEBUG: ORG_GRADLE_PROJECT_ossrhUsername="+System.getenv("ORG_GRADLE_PROJECT_ossrhUsername")
+println "DEBUG: findProperty ossrhUsername=" + project.findProperty('ossrhUsername')
 
 dependencies {
   implementation 'org.yaml:snakeyaml:1.25'
