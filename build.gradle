@@ -235,6 +235,7 @@ nexusPublishing {
             println("DEBUG: url_base=${url_base}") 
             println("DEBUG: ENV[ORG_GRADLE_PROJECT_ossrhUsername]="+System.getenv("ORG_GRADLE_PROJECT_ossrhUsername") )
             println("DEBUG: findProperty('ossrhUsername')"+project.findProperty('ossrhUsername')  )
+
  
             //nexusUrl                = uri(  url_base + "/service/local/")
             nexusUrl                = uri(  url_base + "/service/local/staging/deploy/maven2/")   
