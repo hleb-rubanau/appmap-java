@@ -14,6 +14,7 @@ plugins {
   id 'war'
   id 'jacoco'
   id 'signing'
+  id("io.github.gradle-nexus.publish-plugin").version("1.0.0")
 }
 
 repositories {
@@ -212,32 +213,28 @@ publishing {
         }
   }
 
-   repositories {
 
-        def local_url       = "file://${buildDir}/repo"
-        // see https://central.sonatype.org/pages/gradle.html
-        def default_base        = "https://s01.oss.sonatype.org"
-        //def default_base    = "https://oss.sonatype.org"
-        def url_base        = findProperty("mavenRepoURL") ?: default_base
-        def staging_url     = url_base + "/service/local/staging/deploy/maven2/"
-        def snapshots_url   = url_base + "/content/repositories/snapshots/"
+}
 
-        def is_snapshot     = version.endsWith('SNAPSHOT')
-        def remote_url      = is_snapshot ? snapshots_url : staging_url
+nexusPublishing {
+    repositories {
+        sonatype {
 
-        def ossrh_username  = findProperty('ossrhUsername')
+            // see https://central.sonatype.org/pages/gradle.html
+            def default_base        = "https://s01.oss.sonatype.org"
+            //def default_base    = "https://oss.sonatype.org"
+            def url_base        = findProperty("mavenRepoURL") ?: default_base
+            def staging_url     = url_base + "/service/local/staging/deploy/maven2/"
+            def snapshots_url   = url_base + "/content/repositories/snapshots/"
+            def is_snapshot     = version.endsWith('SNAPSHOT')
+            def remote_url      = is_snapshot ? snapshots_url : staging_url
 
-
-        maven {
-            if (ossrh_username) {
-                url = remote_url
-                credentials {
-                    username = ossrh_username
-                    password = getProperty('ossrhPassword')
-                }
-            } else {
-                url = local_url
-            }
+           
+            //nexusUrl.set(uri(staging_url))
+            nexusUrl.set(uri(url_base+"/service/local/"))
+            snapshotRepositoryUrl.set(uri(snapshots_url))
+            username.set( getProperty('ossrhUsername') )
+            password.set( getProperty('ossrhPassword') )
         }
     }
 }
