@@ -33,7 +33,6 @@ before_deploy:
 
 deploy:
   - provider: script
-    #script: semantic-release
-    script: ./bin/testenv 
+    script: semantic-release
     on:
       branch: master
