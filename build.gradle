@@ -39,6 +39,8 @@ def defaultGroupId      = 'com.appland'
 def defaultArtifactId   = 'appmap-agent'
 def publishGroupId      = findProperty('publishGroupId') ?: defaultGroupId
 def publishArtifactId   = findProperty('publishArtifactId') ?: defaultArtifactId
+            
+println "DEBUG: ORG_GRADLE_PROJECT_ossrhUsername"+System.getenv("ORG_GRADLE_PROJECT_ossrhUsername")
 
 dependencies {
   implementation 'org.yaml:snakeyaml:1.25'
