@@ -14,7 +14,7 @@ plugins {
   id 'war'
   id 'jacoco'
   id 'signing'
-  id("io.github.gradle-nexus.publish-plugin").version("1.0.0")
+  id 'io.github.gradle-nexus.publish-plugin' version '1.0.0'
 }
 
 repositories {
@@ -231,10 +231,10 @@ nexusPublishing {
 
            
             //nexusUrl.set(uri(staging_url))
-            nexusUrl.set(uri(url_base+"/service/local/"))
-            snapshotRepositoryUrl.set(uri(snapshots_url))
-            username.set( getProperty('ossrhUsername') )
-            password.set( getProperty('ossrhPassword') )
+            nexusUrl                = uri(url_base+"/service/local/")
+            snapshotRepositoryUrl   = uri(snapshots_url)
+            username                = project.property('ossrhUsername') 
+            password                = project.property('ossrhPassword') 
         }
     }
 }
