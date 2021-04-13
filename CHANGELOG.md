@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.2...v1.0.3) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** experimenting with closures ([ecb4837](https://github.com/hleb-rubanau/appmap-java/commit/ecb4837605e2907eceb7678620bc4fe2d592c409))
+
 ## [1.0.2](https://github.com/hleb-rubanau/appmap-java/compare/v1.0.1...v1.0.2) (2021-04-13)
 
 
