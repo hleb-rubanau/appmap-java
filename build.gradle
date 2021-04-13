@@ -230,15 +230,15 @@ nexusPublishing {
             // see https://central.sonatype.org/pages/gradle.html
             def default_base        = "https://s01.oss.sonatype.org"
             //def default_base    = "https://oss.sonatype.org"
-            def url_base        = { findProperty("mavenRepoURL") ?: default_base }
+            def url_base        = findProperty("mavenRepoURL") ?: default_base 
 
             println("DEBUG: url_base=%s" % url_base) 
  
             //nexusUrl                = uri(  url_base + "/service/local/")
             nexusUrl                = uri(  url_base + "/service/local/staging/deploy/maven2/")   
             snapshotRepositoryUrl   = uri(  url_base + "/content/repositories/snapshots" )        
-            username                = { project.getProperty('ossrhUsername')    }
-            password                = { project.getProperty('ossrhPassword')    }
+            username                = project.getProperty('ossrhUsername')    
+            password                = project.getProperty('ossrhPassword')    
         }
     }
 }
