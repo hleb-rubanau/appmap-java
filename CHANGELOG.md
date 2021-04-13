@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.1...v1.1.2) (2021-04-13)
+
+
+### Bug Fixes
+
+* **gradle:** nexus publishing tolerance to missing configuration context (to avoid blocking pure builds) ([70059e7](https://github.com/hleb-rubanau/appmap-java/commit/70059e7372c8bfe11483337dca6575c197e1210b))
+* **gradle:** now for the full deployment cycle ([aceafb5](https://github.com/hleb-rubanau/appmap-java/commit/aceafb5f3f8763da5f1f5b2091f52d31ec96b558))
+* **gradle:** stub change to trigger rebuild (diagnosting intermittent travis errors) ([8d8a12b](https://github.com/hleb-rubanau/appmap-java/commit/8d8a12b9a9b8c310a710df3af0a2ed29fa96b9d4))
+
 ## [1.1.1](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.0...v1.1.1) (2021-04-13)
 
 
