@@ -66,7 +66,7 @@ via variable `ORG_GRADLE_PROJECT_publishArtifactId`
 triggers publishing task as a hook defined in `.releaserc.yml`
 
 
-Since April 2021 we're using NexusPublishing plugin, 
+Since April 2021 we're using Gradle Nexus Publish plugin, 
 old `./gradlew publish` command is deprecated 
 and likely won't work in "local filesystem" mode any more 
 (not tested and not needed).
