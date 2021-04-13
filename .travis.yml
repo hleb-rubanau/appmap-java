@@ -15,10 +15,9 @@ cache:
     - '$HOME/.gradle/wrapper/'
 
 script:
-  - ./bin/testenv
-  #- ./gradlew -is check
-  #- ./gradlew -is integrationTest
-  #- ./bin/test
+  - ./gradlew -is check
+  - ./gradlew -is integrationTest
+  - ./bin/test
 
 before_deploy:
   - |
