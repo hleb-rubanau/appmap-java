@@ -237,8 +237,8 @@ nexusPublishing {
             //nexusUrl.set(uri(staging_url))
             nexusUrl                = uri(url_base+"/service/local/")
             snapshotRepositoryUrl   = uri(snapshots_url)
-            //username                = getProperty('ossrhUsername') 
-            //password                = getProperty('ossrhPassword') 
+            username                = Project.getProperty('ossrhUsername') 
+            password                = Project.getProperty('ossrhPassword') 
         }
     }
 }
