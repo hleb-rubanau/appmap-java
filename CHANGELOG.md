@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.3...v1.1.4) (2021-05-10)
+
+
+### Bug Fixes
+
+* **ci:** nothing changed but we need new version due to bug in Travis settings ([dc6fb0c](https://github.com/hleb-rubanau/appmap-java/commit/dc6fb0c08528116fb6bd184a8fc889a90ba4e069))
+
 ## [1.1.3](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.2...v1.1.3) (2021-05-10)
 
 
