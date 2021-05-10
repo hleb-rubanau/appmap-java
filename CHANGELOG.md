@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.2...v1.1.3) (2021-05-10)
+
+
+### Bug Fixes
+
+* **ci:** make package description parameterizable ([a27fa56](https://github.com/hleb-rubanau/appmap-java/commit/a27fa566f88868b00e08303403e5110ba9ffd93b))
+
 ## [1.1.2](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.1...v1.1.2) (2021-04-13)
 
 
