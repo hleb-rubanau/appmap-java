@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.4...v1.1.5) (2021-05-10)
+
+
+### Bug Fixes
+
+* **ci:** trigger new Travis build to tweak description on formerly released package ([916596d](https://github.com/hleb-rubanau/appmap-java/commit/916596d06197958493d4c1b5f7d4218e70d1f17a))
+
 ## [1.1.4](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.3...v1.1.4) (2021-05-10)
 
 
