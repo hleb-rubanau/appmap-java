@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.6...v1.1.7) (2021-05-11)
+
+
+### Bug Fixes
+
+* **ci:** re-trigger deployment (under new artifact id) ([763ac5f](https://github.com/hleb-rubanau/appmap-java/commit/763ac5f14596514477974c4fbb111fb8a67bc4d0))
+
 ## [1.1.6](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.5...v1.1.6) (2021-05-11)
 
 
