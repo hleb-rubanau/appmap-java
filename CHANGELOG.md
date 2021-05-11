@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.5...v1.1.6) (2021-05-11)
+
+
+### Bug Fixes
+
+* **ci:** re-trigger deployment ([af6e798](https://github.com/hleb-rubanau/appmap-java/commit/af6e798754347cd3a4a5feda5ed232a4dc38c5a0))
+
 ## [1.1.5](https://github.com/hleb-rubanau/appmap-java/compare/v1.1.4...v1.1.5) (2021-05-10)
 
 
